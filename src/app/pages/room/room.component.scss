@@ -1,0 +1,150 @@
+:host {
+  height: 100%;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  margin: 0;
+  font-family: "Halvar-Breitschrift-Regular", sans-serif;
+  font-weight: 400
+}
+
+.logo__img {
+  width: 40px;
+  margin-right: 15px;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  &__item {
+    font-size: 20px;
+    font-family: "Halvar-Breitschrift-Medium", sans-serif;
+    margin-bottom: 15px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.panel {
+  display: flex;
+  justify-content: flex-end;
+
+  &__item {
+    margin-left: 15px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.participants {
+  display: flex;
+
+  &__card {
+    margin-right: 15px;
+    width: 250px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__title-group {
+    display: block;
+    width: 100%;
+  }
+
+  &__card-value {
+    font-size: 25px;
+    text-align: center;
+    width: 100%;
+  }
+
+  &__card_vote {
+    background-color: #19875499;
+  }
+
+  .mat-card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: flex;
+    line-height: 26px;
+  }
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+
+  &__item {
+    margin-right: 15px;
+    padding: 15px;
+    width: 100px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 150ms ease;
+
+    &.active {
+      cursor: default;
+      background-color: #19875499;
+      transform: translateY(-15px);
+      .cards {
+        &__item-value {
+          color: #fff;
+        }
+      }
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__item-value {
+    font-size: 30px;
+  }
+
+  &_disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
+footer {
+  margin-top: auto;
+}
+
+.result {
+  font-size: 30px;
+  margin-top: 25px;
+  text-align: center;
+}

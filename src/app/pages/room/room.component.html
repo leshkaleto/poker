@@ -1,0 +1,75 @@
+<div class="row page">
+    <div class="col d-flex flex-column" *ngIf="room$ | async as room; else loading">
+        <div class="row">
+            <header class="col">
+                <div class="logo" [routerLink]="['']">
+                    <img src="/assets/img/clover.png" alt="logo" class="logo__img">
+                    <h1 class="logo__text">Planning Poker</h1>
+                </div>
+            </header>
+        </div>
+        <div class="row">
+            <main class="col">
+                <div class="info">
+                    <div class="info__item" *ngIf="user$ | async as user">
+                        Username: {{user.name}}
+                    </div>
+                </div>
+                <div class="participants">
+                    <mat-card class="participants__card" [class.participants__card_vote]="participant.vote"
+                              *ngFor="let participant of room.participants"
+                    >
+                        <mat-card-title-group class="participants__title-group">
+                            <mat-card-title>
+                                <mat-icon *ngIf="participant.userKey === (user$ | async)?.key">person</mat-icon>
+                                {{participant.vote | isShowVote | async}}
+                            </mat-card-title>
+                            <mat-card-title>
+                                {{participant.name}}
+                            </mat-card-title>
+                        </mat-card-title-group>
+                    </mat-card>
+                </div>
+            </main>
+            <aside class="col">
+                <div class="panel">
+                    <ng-container *ngIf="user$ | async as user">
+                        <button class="panel__item btn btn-secondary" (click)="leaveRoom()">Leave</button>
+                        <button class="panel__item btn btn-success" (click)="changeName()">Change name</button>
+                        <ng-container *ngIf="room.creatorKey === user.key">
+                            <button *ngIf="!room.isGameOver; else createGame" class="panel__item btn btn-success"
+                                    (click)="showResults()">
+                                Show Results
+                            </button>
+                            <ng-template #createGame>
+                                <button class="panel__item btn btn-success" (click)="newGame()">
+                                    New Game
+                                </button>
+                            </ng-template>
+                        </ng-container>
+                    </ng-container>
+                </div>
+                <div class="result">
+                    RESULT: {{gameResult$ | async}}
+                </div>
+            </aside>
+        </div>
+        <footer class="row">
+            <div class="col cards" [class.cards_disabled]="room.isGameOver">
+                <mat-card class="cards__item"
+                          [class.active]="card | isVotedCard | async"
+                          *ngFor="let card of room.cards" (click)="vote(card)"
+                >
+                    <mat-card-content class="cards__item-value">
+                        {{card}}
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </footer>
+    </div>
+    <ng-template #loading>
+        <div class="col d-flex justify-content-center align-items-center">
+            <mat-spinner></mat-spinner>
+        </div>
+    </ng-template>
+</div>

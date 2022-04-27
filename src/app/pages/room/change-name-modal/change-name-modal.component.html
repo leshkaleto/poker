@@ -1,0 +1,9 @@
+<form [formGroup]="form" (ngSubmit)="updateUsername()">
+    <div class="form-field">
+        <mat-form-field appearance="legacy">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Say your name" formControlName="name">
+        </mat-form-field>
+    </div>
+    <button type="submit" class="btn btn-success">Update username</button>
+</form>

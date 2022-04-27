@@ -1,0 +1,24 @@
+@import "scss/fonts";
+@import '~bootstrap/scss/bootstrap';
+
+* {
+  font-family: "Halvar-Breitschrift-Regular", sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.page {
+  padding: 25px 0;
+  height: 100%;
+}

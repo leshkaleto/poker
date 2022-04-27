@@ -1,0 +1,12 @@
+<div class="row d-flex flex-column" *ngIf="isAuthenticated$ | async else loading">
+    <div class="col logo">
+        <img src="assets/img/clover.png" alt="logo">
+    </div>
+    <div class="col username">
+        Hello {{username$ | async}}!
+    </div>
+    <button class="btn btn-success btn-lg btn-create" [disabled]="createLoad" (click)="create()">Create a room</button>
+</div>
+<ng-template #loading>
+    <mat-spinner></mat-spinner>
+</ng-template>

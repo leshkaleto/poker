@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "rev-poker": {
+      "hosting": {
+        "rev-planning-poker": [
+          "rev-poker"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "rev-poker"
+  }
+}
